@@ -630,9 +630,8 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/bee39fe8abcd0da7d84e6639591ef5b62b1c43ca.png)
+![Age Distribution of Male and Female Customers](Images/bee39fe8abcd0da7d84e6639591ef5b62b1c43ca.png)
 :::
-
 ## Age vs Annual Income by Genre
 
 ``` python
@@ -668,7 +667,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/876c6991b9a4289911d41d398f59aee3896d2756.png)
+![Age vs Annual Income by Genre](Images//876c6991b9a4289911d41d398f59aee3896d2756.png)
 :::
 
 This scatter plot depicts the relationship between customers\' ages and
@@ -700,7 +699,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/34357ccc8cc5340ca6e8edc7c05021e77caf74b2.png)
+![Distribution of Spending Scores by Gender](Images/34357ccc8cc5340ca6e8edc7c05021e77caf74b2.png)
 :::
 
 
@@ -750,7 +749,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/1484567ac0dc56942f97452576e649481ee516ac.png)
+![](Images/1484567ac0dc56942f97452576e649481ee516ac.png)
 :::
 
 The Elbow Curve indicates that using 5 clusters is the most efficient
@@ -823,7 +822,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/b973e1735bc103c668eb4a8c43219d2329f3ad87.png)
+![](Images/b973e1735bc103c668eb4a8c43219d2329f3ad87.png)
 :::
 
 ## Step 5 : Silhouette Analysis to Evaluate Clustering Quality {#step-5--silhouette-analysis-to-evaluate-clustering-quality}
@@ -837,7 +836,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/f5c8d513a1d8d6a5cec59f9b595531fab65524f2.png)
+![](Images/f5c8d513a1d8d6a5cec59f9b595531fab65524f2.png)
 :::
 
 ### Metric 1: Silhouette Score
@@ -933,7 +932,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/1054f31e61e4908982893928006f33baf226ef9a.png)
+![](Images/1054f31e61e4908982893928006f33baf226ef9a.png)
 :::
 
 Generate a heatmap to visualize how the number of clusters changes for
@@ -953,7 +952,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/86cf90b10544fc3016b72417da4f63c9ae6bf250.png)
+![](Images/86cf90b10544fc3016b72417da4f63c9ae6bf250.png)
 :::
 
 Generate a heatmap to analyze the silhouette score (clustering quality)
@@ -997,7 +996,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/8c1bb7ceadfe294b23ec29a94d7b926cf51a7983.png)
+![](Images/8c1bb7ceadfe294b23ec29a94d7b926cf51a7983.png)
 :::
 
 Create scatterplots to visualize: - Clusters formed on Annual Income
@@ -1036,7 +1035,7 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_fb1c893bee374e4598e71c9419924e62/e87fdfae30a8502d1cc2ca3f362a3f842da1a2f0.png)
+![](Images/e87fdfae30a8502d1cc2ca3f362a3f842da1a2f0.png)
 :::
 
 ## Step 7 : Evaluation of DBSCAN Algorithm {#step-7--evaluation-of-dbscan-algorithm}
@@ -1097,21 +1096,15 @@ print(cluster_counts)
 
 ## Comparaison entre K-Means et DBSCAN en fonction du revenu annuel et du score de dépense
 
-```{=html}
-<div style="display: flex; justify-content: space-between;">
-    <img src="Images/annualincome_kmeans.png" alt="Image 1" style="width: 45%; margin-right: 10px;">
-    <img src="Images/annualincome_dbscan.png" alt="Image 2" style="width: 45%;">
-</div>
-```
+| K-Means                                  | DBSCAN                                  |
+|------------------------------------------|-----------------------------------------|
+| ![K-Means](Images/annualincome_kmeans.png) | ![DBSCAN](Images/annualincome_dbscan.png) |
 
-## Comparaison entre K-Means et DBSCAN en fonction de l\'âge et du score de dépense
+## Comparaison entre K-Means et DBSCAN en fonction de l'âge et du score de dépense
 
-```{=html}
-<div style="display: flex; justify-content: space-between;">
-    <img src="Images/age_kmeans.png" alt="Image 1" style="width: 45%; margin-right: 10px;">
-    <img src="Images/age_dbscan.png" alt="Image 2" style="width: 45%;">
-</div>
-```
+| K-Means                                  | DBSCAN                                  |
+|------------------------------------------|-----------------------------------------|
+| ![K-Means](Images/age_kmeans.png)         | ![DBSCAN](Images/age_dbscan.png)         |
 
 ``` python
 # Section: K-Means vs DBSCAN - Conclusion and Comparison
