@@ -1278,5 +1278,5 @@ We welcome contributions from the community! 🎉
    git checkout -b feature-name
 
 ------------------------------------------------------------------------
-# Made with ❤️! {#made-with-️}
+# Made with ❤️!
 :::
