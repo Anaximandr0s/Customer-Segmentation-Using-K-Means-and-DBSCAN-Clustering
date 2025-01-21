@@ -27,6 +27,7 @@ jupyter:
     start_time: "2023-02-03T19:50:51.233964"
     version: 2.3.4
 ---
+
 # Customer Segmentation Using K-Means and DBSCAN Clustering
 
 ![K-Means Clustering](Images/customer-segmentation.png)
@@ -77,8 +78,6 @@ enhance customer engagement. \_\_\_
 -   E.g., DBSCAN
 :::
 
-::: {#099986f4 .cell .markdown papermill="{\"duration\":1.1139e-2,\"end_time\":\"2023-02-03T19:50:59.221168\",\"exception\":false,\"start_time\":\"2023-02-03T19:50:59.210029\",\"status\":\"completed\"}" tags="[]"}
-
 ------------------------------------------------------------------------
 
 # I: Import Required Libraries
@@ -91,7 +90,6 @@ In this step, we import essential libraries for:
     Additionally, we configure our Jupyter Notebook for inline plotting.
 :::
 
-::: {#c060ca0f .cell .code execution_count="2" papermill="{\"duration\":1.363486,\"end_time\":\"2023-02-03T19:51:00.595768\",\"exception\":false,\"start_time\":\"2023-02-03T19:50:59.232282\",\"status\":\"completed\"}" tags="[]"}
 ``` python
 # 1. Setting Environment Variables (Optional)
 import os
@@ -135,8 +133,6 @@ print("------ All Packages are installed and ready! ------")
 :::
 :::
 
-::: {#f4786588 .cell .markdown papermill="{\"duration\":1.0915e-2,\"end_time\":\"2023-02-03T19:51:00.618121\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:00.607206\",\"status\":\"completed\"}" tags="[]"}
-
 ------------------------------------------------------------------------
 
 # II: Load and Preprocess the Dataset
@@ -149,23 +145,16 @@ In this step, we:
 2.  Explore its structure and basic statistics.
 3.  Handle categorical data by encoding the \'Genre\' column.
 4.  Drop irrelevant columns for clustering (e.g., \'CustomerID\').
-:::
 
-::: {#fec026dd-aec1-4dd1-8580-0d511a7198ff .cell .markdown}
 ## Load the dataset
-:::
 
-::: {#1cfb95a1 .cell .code execution_count="4" papermill="{\"duration\":5.9315e-2,\"end_time\":\"2023-02-03T19:51:00.688797\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:00.629482\",\"status\":\"completed\"}" tags="[]"}
 ``` python
 data = pd.read_csv("Mall_Customers.csv")
 ```
-:::
 
-::: {#eac9815d-7898-4035-a99e-e409c43d8fdc .cell .markdown}
 ## Display the first five rows of the dataset to understand its structure
-:::
 
-::: {#edc634c0-3187-4c87-8d1b-50db95f94b22 .cell .code execution_count="6"}
+
 ``` python
 print("----- Displaying the first few rows of the dataset -----")
 display(data.head())
@@ -247,14 +236,8 @@ display(data.head())
 </table>
 </div>
 ```
-:::
-:::
-
-::: {#197e195b .cell .markdown papermill="{\"duration\":1.0945e-2,\"end_time\":\"2023-02-03T19:51:00.711288\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:00.700343\",\"status\":\"completed\"}" tags="[]"}
 ## Get a concise summary of the dataset, including data types and non-null values
-:::
 
-::: {#5c312321 .cell .code execution_count="8" papermill="{\"duration\":4.3522e-2,\"end_time\":\"2023-02-03T19:51:00.766441\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:00.722919\",\"status\":\"completed\"}" tags="[]"}
 ``` python
 print("\n----- Dataset Information -----")
 data.info()
@@ -276,13 +259,9 @@ data.info()
     dtypes: int64(4), object(1)
     memory usage: 7.9+ KB
 :::
-:::
 
-::: {#63a60acb-ddda-4e7a-804f-ccd4ada92c87 .cell .markdown}
 ## Check for any missing values
-:::
 
-::: {#e60afbb8-a742-4819-b45b-1e7cd9efd2ec .cell .code execution_count="10"}
 ``` python
 print("\n----- Checking for Missing Values -----")
 print(data.isnull().sum())
@@ -298,13 +277,9 @@ print(data.isnull().sum())
     Spending Score (1-100)    0
     dtype: int64
 :::
-:::
 
-::: {#2114313c-9be2-4747-bba2-828c645c2bbb .cell .markdown}
 ## Encode the \'Genre\' column: Male -\> 0, Female -\> 1
-:::
 
-::: {#e1babcd2-37e4-44a5-a67b-194c3be1fe26 .cell .code execution_count="12"}
 ``` python
 print("\n----- Encoding 'Genre' Column -----")
 data['Genre'] = data['Genre'].map({'Male': 0, 'Female': 1})
@@ -314,13 +289,9 @@ data['Genre'] = data['Genre'].map({'Male': 0, 'Female': 1})
 
     ----- Encoding 'Genre' Column -----
 :::
-:::
 
-::: {#93095df6-4fb7-41af-8bc8-8ddf3b92855b .cell .markdown}
 ## Confirm the encoding process
-:::
 
-::: {#d7d80188-8060-434d-bee3-c3736c5e16cf .cell .code execution_count="14"}
 ``` python
 print("\n----- Confirming Encoded Data -----")
 display(data.head())
@@ -404,13 +375,9 @@ display(data.head())
 </div>
 ```
 :::
-:::
 
-::: {#e2cbb175-157b-410b-9d27-070fc330de1b .cell .markdown}
 ## Display statistical summary of the dataset
-:::
 
-::: {#cef4399c .cell .code execution_count="16" papermill="{\"duration\":6.2139e-2,\"end_time\":\"2023-02-03T19:51:00.841131\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:00.778992\",\"status\":\"completed\"}" tags="[]"}
 ``` python
 print("\n----- Statistical Summary:-----")
 display(data.describe())
@@ -518,13 +485,9 @@ display(data.describe())
 </div>
 ```
 :::
-:::
 
-::: {#8e5dad2d-3f7a-47dd-bbdb-dc3510c4daea .cell .markdown}
 ## Drop the \'CustomerID\' column as it is irrelevant for clustering
-:::
 
-::: {#542a7205-dc2d-41cc-8b96-9ab3834e86f9 .cell .code execution_count="18"}
 ``` python
 print("\n----- Dropping 'CustomerID' column as it is irrelevant for clustering----- ")
 data.drop(columns=['CustomerID'], inplace=True)
@@ -534,13 +497,9 @@ data.drop(columns=['CustomerID'], inplace=True)
 
     ----- Dropping 'CustomerID' column as it is irrelevant for clustering----- 
 :::
-:::
 
-::: {#a654c04f-f673-4d9b-9d00-658dc07e7d3a .cell .markdown}
 ## Confirm changes
-:::
 
-::: {#71a4dd42-2861-4a84-9c62-e9e12664bf1a .cell .code execution_count="20"}
 ``` python
 print("\n----- Preview of the dataset after preprocessing:-----")
 display(data.head())
@@ -618,10 +577,6 @@ display(data.head())
 </div>
 ```
 :::
-:::
-
-::: {#9f9ef3c6 .cell .markdown papermill="{\"duration\":1.1801e-2,\"end_time\":\"2023-02-03T19:51:00.865979\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:00.854178\",\"status\":\"completed\"}" tags="[]"}
-
 ------------------------------------------------------------------------
 
 # III: Exploratory Data Analysis (EDA)
@@ -635,13 +590,10 @@ In this step, we:
         `Annual Income (k$)`, differentiated by gender.
     -   Histograms to compare the distribution of
         `Spending Score (1-100)` for male and female customers.
-:::
 
-::: {#b72d3acf-3d8b-4c49-9157-1f459b700835 .cell .markdown}
+
 ## Age Distribution of Male and Female Customers
-:::
 
-::: {#2102a64d-c120-463a-b58a-6f15d886b3f5 .cell .code execution_count="22"}
 ``` python
 # Subset the data for males and females based on the 'Genre' column (0 for males, 1 for females)
 males_age = data[data['Genre'] == 0]['Age']  # Subset with males' ages
@@ -678,15 +630,11 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/bee39fe8abcd0da7d84e6639591ef5b62b1c43ca.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/bee39fe8abcd0da7d84e6639591ef5b62b1c43ca.png)
 :::
 
-::: {#80b4bf62-7653-4f0e-9afc-0d1c2d684267 .cell .markdown}
 ## Age vs Annual Income by Genre
-:::
 
-::: {#1eab67ad .cell .code execution_count="24" papermill="{\"duration\":0.36303,\"end_time\":\"2023-02-03T19:51:01.240719\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:00.877689\",\"status\":\"completed\"}" tags="[]"}
 ``` python
 # Ensure 'Genre' is categorical
 data['Genre'] = data['Genre'].astype('category')
@@ -720,11 +668,9 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/876c6991b9a4289911d41d398f59aee3896d2756.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/876c6991b9a4289911d41d398f59aee3896d2756.png)
 :::
 
-::: {#9674f76d-7058-43b8-bc97-88ba5df6f4f7 .cell .markdown}
 This scatter plot depicts the relationship between customers\' ages and
 their annual incomes (in \$K), differentiated by gender. Orange points
 represent female customers, and blue points represent male customers.
@@ -733,13 +679,9 @@ from their 20s to 50s tend to have a wide range of incomes, while older
 customers are less densely represented. There doesn\'t appear to be a
 strong correlation between age and annual income, but gender
 distribution is balanced across the dataset.
-:::
 
-::: {#f240e3ac-da1d-42ee-9e00-ff1076883309 .cell .markdown}
 ## Distribution of Spending Scores by Gender
-:::
 
-::: {#47e7864e .cell .code execution_count="26" papermill="{\"duration\":0.354303,\"end_time\":\"2023-02-03T19:51:01.943130\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:01.588827\",\"status\":\"completed\"}" tags="[]"}
 ``` python
 # Histograms to compare Spending Score distributions for male and female customers
 plt.figure(figsize=(12, 8))
@@ -758,11 +700,10 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/34357ccc8cc5340ca6e8edc7c05021e77caf74b2.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/34357ccc8cc5340ca6e8edc7c05021e77caf74b2.png)
 :::
 
-::: {#6327824e-6b0a-4176-bb9f-c68a26881525 .cell .markdown}
+
 This histogram compares the distribution of spending scores (ranging
 from 1 to 100) between male and female customers. The orange bars
 represent female customers, while the blue bars represent male
@@ -770,9 +711,7 @@ customers. Female customers generally show more variability in spending
 scores, with peaks observed around scores of 20 and 60. Male customers,
 while less variable, also exhibit notable peaks at specific score
 ranges, such as near 40.
-:::
 
-::: {#82cb7478 .cell .markdown papermill="{\"duration\":1.5247e-2,\"end_time\":\"2023-02-03T19:51:02.860574\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:02.845327\",\"status\":\"completed\"}" tags="[]"}
 
 ------------------------------------------------------------------------
 
@@ -785,27 +724,20 @@ In this step, we perform the following:
 1.  Select relevant features for clustering.
 2.  Use the **Elbow Method** to determine the optimal number of
     clusters.
-3.  Apply **K-Means Clustering** to segment customers.
+3.  Apply **K- Means Clustering** to segment customers.
 4.  Visualize the clusters.
 5.  Evaluate with Silhouette score.
-:::
 
-::: {#9bf915a1-8616-449b-8882-e18cb989504e .cell .markdown}
+
 ## Step 1 : Select relevant features {#step-1--select-relevant-features}
-:::
 
-::: {#bb11c243-0b42-4316-a94a-195aabb1b721 .cell .code execution_count="28"}
 ``` python
 # Clustering is based on 'Age', 'Annual Income (k$)', and 'Spending Score (1-100)'
 X = data[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']]
 ```
-:::
 
-::: {#c9137317-31c5-4584-98fc-703186d583ef .cell .markdown}
 ## Step 2 : Determine the optimal number of clusters using the Elbow Method {#step-2--determine-the-optimal-number-of-clusters-using-the-elbow-method}
-:::
 
-::: {#4692d205-72c1-4e4a-af9d-9b507146156a .cell .code execution_count="30"}
 ``` python
 from yellowbrick.cluster import KElbowVisualizer
 
@@ -818,38 +750,25 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/2ec00440882a3286e16250d966371594fb69dc77.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/1484567ac0dc56942f97452576e649481ee516ac.png)
 :::
 
-::: {#5be3c8ac-72fd-4b63-9dad-25023023d613 .cell .markdown}
 The Elbow Curve indicates that using 5 clusters is the most efficient
 choice for this dataset when applying the K-Means algorithm.
-:::
 
-::: {#7677126a-2a60-4828-bebe-cd283075392b .cell .markdown}
 ## Step 3 : Applying K-Means with 5 Clusters {#step-3--applying-k-means-with-5-clusters}
-:::
 
-::: {#417d6ba7-f7e7-4660-840d-88a925b6b79a .cell .code execution_count="32"}
 ``` python
 KM_5_clusters = KMeans(n_clusters=5, init='k-means++').fit(X) # initialise and fit K-Means model
 ```
-:::
 
-::: {#b5a74b72-2473-4640-8bec-649b6b8d5c6d .cell .code execution_count="34"}
 ``` python
 # Create a copy of the dataset with cluster labels
 KM5_clustered = X.copy()
 KM5_clustered.loc[:,'Cluster'] = KM_5_clusters.labels_ # append labels to point
 ```
-:::
-
-::: {#7b2ca3b9-8b50-44bb-97d3-e43d44cbd1ed .cell .markdown}
 ## Step 4 : Visualizing Clusters {#step-4--visualizing-clusters}
-:::
 
-::: {#7e708e1b-ea89-4699-8a93-f6c16451702a .cell .code execution_count="67"}
 ``` python
 # Function to draw ellipses for clusters
 def draw_ellipse(ax, cluster_data, edge_color):
@@ -904,15 +823,11 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/761b47e3138614d9db226bc85083f2b574b1bddd.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/b973e1735bc103c668eb4a8c43219d2329f3ad87.png)
 :::
 
-::: {#8fc3d6a1-7301-4107-8485-b92959159f1a .cell .markdown}
 ## Step 5 : Silhouette Analysis to Evaluate Clustering Quality {#step-5--silhouette-analysis-to-evaluate-clustering-quality}
-:::
 
-::: {#0772b11a-f872-44d0-b5ef-21cc46035aa6 .cell .code execution_count="75"}
 ``` python
 model = KMeans(n_clusters=5, random_state=0)
 visualizer = SilhouetteVisualizer(model, colors='colorblind')
@@ -922,15 +837,11 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/f5c8d513a1d8d6a5cec59f9b595531fab65524f2.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/f5c8d513a1d8d6a5cec59f9b595531fab65524f2.png)
 :::
 
-::: {#084f1924-ceeb-41b0-91c9-431212aaaaec .cell .markdown}
 ### Metric 1: Silhouette Score
-:::
 
-::: {#74bb334c-7146-4090-abf9-1e6061ec8f8d .cell .code execution_count="40"}
 ``` python
 # This measures how similar each point is to its own cluster (cohesion) compared to other clusters (separation).
 # Values range from -1 (poor clustering) to 1 (perfect clustering).
@@ -940,15 +851,11 @@ print(f"Silhouette Score for K-Means: {silhouette_kmeans}")
 ```
 
 ::: {.output .stream .stdout}
-    Silhouette Score for K-Means: 0.44446409171786105
-:::
+    Silhouette Score for K-Means: 0.44428597560893024
 :::
 
-::: {#6acf1c85-c191-46a8-82f9-9f1cc040a9f3 .cell .markdown}
 ### Metric 2: Davies-Bouldin Index
-:::
 
-::: {#fd53b90a-3adf-4996-8af9-76175d733724 .cell .code execution_count="42"}
 ``` python
 # This evaluates the ratio of within-cluster scatter to between-cluster separation.
 # Lower values indicate better clustering.
@@ -958,11 +865,8 @@ print(f"Davies-Bouldin Index for K-Means: {davies_bouldin_kmeans}")
 ```
 
 ::: {.output .stream .stdout}
-    Davies-Bouldin Index for K-Means: 0.8192608000040172
+    Davies-Bouldin Index for K-Means: 0.8218781633199782
 :::
-:::
-
-::: {#fbcfccc9-5fc8-44e4-9df7-ae04db2af15c .cell .markdown}
 
 ------------------------------------------------------------------------
 
@@ -979,19 +883,12 @@ In this step, we perform the following:
 5.  Perform DBSCAN Clustering with Optimal Parameters.
 6.  Visualize the Clusters and Outliers.
 7.  Evaluation of DBSCAN Algorithm.
-:::
 
-::: {#d6bae169-1d6a-40b3-a6f5-c0fd3f4dddb4 .cell .code execution_count="44"}
 ``` python
 from sklearn.cluster import DBSCAN
 ```
-:::
-
-::: {#17227c6c-13dd-4f97-9f3e-20b50bfbc1b2 .cell .markdown}
 ## Step 1 : Define Hyperparameters for DBSCAN {#step-1--define-hyperparameters-for-dbscan}
-:::
 
-::: {#336e4ae4-be0c-4207-9d0a-dfac165e43aa .cell .code execution_count="46"}
 ``` python
 from itertools import product
 
@@ -1000,18 +897,13 @@ min_samples = np.arange(3,10) # min_samples values to be investigated
 
 DBSCAN_params = list(product(eps_values, min_samples))
 ```
-:::
 
-::: {#360df797-6678-4902-a0ff-f5d6b20ae6ea .cell .markdown}
+
 Define a grid of hyperparameter values (eps and min_samples) for DBSCAN.
 These combinations will be tested to find the optimal parameters.
-:::
 
-::: {#741f55d0-b7f3-4e29-b64c-868ec64c4908 .cell .markdown}
 ## Step 2 : Perform Clustering and Evaluate Silhouette Scores {#step-2--perform-clustering-and-evaluate-silhouette-scores}
-:::
 
-::: {#f96f6535-adf2-4d29-ab58-133673b71574 .cell .code execution_count="48"}
 ``` python
 no_of_clusters = []  # To store the number of clusters for each parameter combination
 sil_score = []       # To store silhouette scores for each parameter combination
@@ -1021,19 +913,13 @@ for p in DBSCAN_params:
     no_of_clusters.append(len(np.unique(DBS_clustering.labels_)))  # Count the number of clusters
     sil_score.append(silhouette_score(X, DBS_clustering.labels_))  # Compute silhouette score
 ```
-:::
 
-::: {#c76d2ed1-0a29-4eba-804f-e2f9361b483c .cell .markdown}
 Iterate over all parameter combinations and evaluate the clustering
 result by calculating: - The number of clusters formed. - The silhouette
 score, which measures clustering quality.
-:::
 
-::: {#f05abca7-3643-4398-b2ef-67167a3e0b00 .cell .markdown}
 ## Step 3 : Visualize the Number of Clusters {#step-3--visualize-the-number-of-clusters}
-:::
 
-::: {#220e0e07-7af1-42c3-997c-1c647181cd29 .cell .code execution_count="85"}
 ``` python
 tmp = pd.DataFrame.from_records(DBSCAN_params, columns=['Eps', 'Min_samples'])  # Convert parameters to DataFrame
 tmp['No_of_clusters'] = no_of_clusters  # Add the number of clusters for each parameter combination
@@ -1047,20 +933,14 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/1054f31e61e4908982893928006f33baf226ef9a.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/1054f31e61e4908982893928006f33baf226ef9a.png)
 :::
 
-::: {#6099c46a-6c1b-45dd-a176-dc8bd1f783d1 .cell .markdown}
 Generate a heatmap to visualize how the number of clusters changes for
 different eps and min_samples values.
-:::
 
-::: {#fe590aa0-1b0a-42c5-9d46-4769ee6cfb7b .cell .markdown}
 ## Step 4 : Visualize Silhouette Scores {#step-4--visualize-silhouette-scores}
-:::
 
-::: {#07526876-5e55-42d4-8196-eec8bb3a2f90 .cell .code execution_count="52"}
 ``` python
 tmp = pd.DataFrame.from_records(DBSCAN_params, columns=['Eps', 'Min_samples'])  # Reset DataFrame
 tmp['Sil_score'] = sil_score  # Add silhouette scores for each parameter combination
@@ -1073,39 +953,27 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/86cf90b10544fc3016b72417da4f63c9ae6bf250.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/86cf90b10544fc3016b72417da4f63c9ae6bf250.png)
 :::
 
-::: {#bc68e7a2-17c8-497e-860b-4e8ec4580e4c .cell .markdown}
 Generate a heatmap to analyze the silhouette score (clustering quality)
 for different hyperparameter combinations.
-:::
 
-::: {#5a24b475-ca8d-400d-a6ef-a058bc8499ff .cell .markdown}
 ## Step 5 : Perform DBSCAN Clustering with Optimal Parameters {#step-5--perform-dbscan-clustering-with-optimal-parameters}
-:::
 
-::: {#e9313700-c692-4b59-93d4-f4f9c72caf27 .cell .code execution_count="92"}
 ``` python
-DBS_clustering = DBSCAN(eps=12.25, min_samples=6).fit(X)  # Apply DBSCAN with selected parameters
+DBS_clustering = DBSCAN(eps=12.5, min_samples=4).fit(X)  # Apply DBSCAN with selected parameters
 
 DBSCAN_clustered = X.copy()
 DBSCAN_clustered.loc[:, 'Cluster'] = DBS_clustering.labels_  # Append cluster labels to the dataset
 outliers = DBSCAN_clustered[DBSCAN_clustered['Cluster'] == -1]  # Identify outliers (label = -1)
 ```
-:::
 
-::: {#a9135107-7630-48eb-8eeb-9c4f7f53dbbf .cell .markdown}
 Perform clustering with the chosen optimal parameters (eps=12.5 and
 min_samples=4) and identify outliers.
-:::
 
-::: {#8e0b6613-4737-44b5-b3e0-bb4765d35701 .cell .markdown}
 ## Step 6 : Visualize the Clusters and Outliers {#step-6--visualize-the-clusters-and-outliers}
-:::
 
-::: {#be16c3c5-1a31-43c2-aea8-fd153f22c984 .cell .code execution_count="94"}
 ``` python
 # Create two scatter plots: one for 'Annual Income' vs. 'Spending Score' and another for 'Age' vs. 'Spending Score'
 fig2, axes = plt.subplots(1, 2, figsize=(12, 5))
@@ -1129,17 +997,13 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/3aae89b10d2edaa2a8be40303bdd556c1e5cfce6.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/8c1bb7ceadfe294b23ec29a94d7b926cf51a7983.png)
 :::
 
-::: {#26a4f613-796a-4abf-8b20-c21f2c16722d .cell .markdown}
 Create scatterplots to visualize: - Clusters formed on Annual Income
 (k\$) vs. Spending Score (1-100). - Clusters formed on Age vs. Spending
 Score (1-100).
-:::
 
-::: {#6aaf2729-d980-4cd3-bbdd-0b2e871c92cc .cell .code execution_count="96"}
 ``` python
 # Create two scatter plots: one for 'Annual Income' vs. 'Spending Score' and another for 'Age' vs. 'Spending Score'
 fig2, axes = plt.subplots(1, 2, figsize=(12, 5))
@@ -1172,15 +1036,11 @@ plt.show()
 ```
 
 ::: {.output .display_data}
-![](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/e702e73a50b3e1bf71e9e365866f2a9d2ddf515e.png)
-:::
+![](vertopal_fb1c893bee374e4598e71c9419924e62/e87fdfae30a8502d1cc2ca3f362a3f842da1a2f0.png)
 :::
 
-::: {#c29e602b-1e7b-4f65-b3b2-a8d1eee65521 .cell .markdown}
 ## Step 7 : Evaluation of DBSCAN Algorithm {#step-7--evaluation-of-dbscan-algorithm}
-:::
 
-::: {#06518426-b3d5-438a-b613-e8a4757185ee .cell .code execution_count="98"}
 ``` python
 # Filter out noise points (-1) before calculating the silhouette score
 filtered_data = DBSCAN_clustered[DBSCAN_clustered['Cluster'] != -1].drop('Cluster', axis=1)
@@ -1191,22 +1051,18 @@ print(f"Silhouette Score: {silhouette_avg}")
 ```
 
 ::: {.output .stream .stdout}
-    Silhouette Score: 0.4229508231113778
-:::
+    Silhouette Score: 0.334268815892404
 :::
 
-::: {#996da94d-da42-43d8-b3de-3cc22627d316 .cell .code execution_count="100"}
 ``` python
 num_noise_points = len(outliers)
 print(f"Number of Noise Points: {num_noise_points}")
 ```
 
 ::: {.output .stream .stdout}
-    Number of Noise Points: 51
-:::
+    Number of Noise Points: 18
 :::
 
-::: {#a2e4831d-4843-4a24-8d24-90f843652ff9 .cell .code execution_count="102"}
 ``` python
 # Davies-Bouldin score requires non-outlier data
 davies_bouldin = davies_bouldin_score(filtered_data, filtered_labels)
@@ -1214,11 +1070,9 @@ print(f"Davies-Bouldin Index: {davies_bouldin}")
 ```
 
 ::: {.output .stream .stdout}
-    Davies-Bouldin Index: 0.7699251322417083
-:::
+    Davies-Bouldin Index: 0.7554712211796317
 :::
 
-::: {#f9e97764-b2da-4ea4-a3ec-2194ae7fc443 .cell .code execution_count="104"}
 ``` python
 cluster_counts = DBSCAN_clustered['Cluster'].value_counts()
 print("Cluster Size Distribution:")
@@ -1228,21 +1082,37 @@ print(cluster_counts)
 ::: {.output .stream .stdout}
     Cluster Size Distribution:
     Cluster
-     0    100
-    -1     51
-     1     32
-     2     17
+     0    112
+     2     34
+     3     24
+    -1     18
+     1      8
+     4      4
     Name: count, dtype: int64
 :::
-:::
 
-::: {#cd34fe8f-ab48-40aa-96db-92a605a07417 .cell .markdown}
 # V: k-means vs DBSCAN
 
 ![K-Means Cluster Creation](Images/KvsD.png)
-:::
 
-::: {#dfd39028-679b-4dc0-9118-57ed7a77ee97 .cell .code execution_count="71"}
+## Comparaison entre K-Means et DBSCAN en fonction du revenu annuel et du score de dépense
+
+```{=html}
+<div style="display: flex; justify-content: space-between;">
+    <img src="Images/annualincome_kmeans.png" alt="Image 1" style="width: 45%; margin-right: 10px;">
+    <img src="Images/annualincome_dbscan.png" alt="Image 2" style="width: 45%;">
+</div>
+```
+
+## Comparaison entre K-Means et DBSCAN en fonction de l\'âge et du score de dépense
+
+```{=html}
+<div style="display: flex; justify-content: space-between;">
+    <img src="Images/age_kmeans.png" alt="Image 1" style="width: 45%; margin-right: 10px;">
+    <img src="Images/age_dbscan.png" alt="Image 2" style="width: 45%;">
+</div>
+```
+
 ``` python
 # Section: K-Means vs DBSCAN - Conclusion and Comparison
 
@@ -1403,11 +1273,17 @@ display(Markdown(conclusion_text))
 - Based on this analysis, **K-Means** performed better on this dataset because of its spherical cluster shapes and clear separations.
 - **DBSCAN** remains a powerful tool for datasets with irregular cluster shapes or significant noise, which were not characteristics of this dataset.
 :::
-:::
-
-::: {#17ccf2fe .cell .markdown papermill="{\"duration\":1.6813e-2,\"end_time\":\"2023-02-03T19:51:06.541057\",\"exception\":false,\"start_time\":\"2023-02-03T19:51:06.524244\",\"status\":\"completed\"}" tags="[]"}
 
 ------------------------------------------------------------------------
+# Contribution
+We welcome contributions from the community! 🎉
 
+### How to Contribute
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feature-name
+
+------------------------------------------------------------------------
 # Made with ❤️! {#made-with-️}
 :::
