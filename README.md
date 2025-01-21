@@ -27,8 +27,6 @@ jupyter:
     start_time: "2023-02-03T19:50:51.233964"
     version: 2.3.4
 ---
-
-::: {#2d9c06f2 .cell .markdown jp-MarkdownHeadingCollapsed="true" papermill="{\"duration\":1.2649e-2,\"end_time\":\"2023-02-03T19:50:59.198460\",\"exception\":false,\"start_time\":\"2023-02-03T19:50:59.185811\",\"status\":\"completed\"}" tags="[]"}
 # Customer Segmentation Using K-Means and DBSCAN Clustering
 
 ![K-Means Clustering](Images/customer-segmentation.png)
@@ -56,8 +54,6 @@ behavior, enabling businesses to optimize their marketing approaches and
 enhance customer engagement. \_\_\_
 
 ## Types Clustering:
-
-![clustering.jfif](vertopal_8e3b42c4a09c406a94893c6a0cdf44d1/clustering.jfif)
 
 ### Connectivity-based clustering
 
